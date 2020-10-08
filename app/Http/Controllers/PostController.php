@@ -16,10 +16,10 @@ class PostController extends Controller
   public function store(Request $request){
 
     $data = $request -> validate([
-      'title'    => 'required',
-      'topic'    => 'required',
-      'content'  => 'required',
-      'views'    => 'required'
+      'title'    => 'required | min:2 | max:10',
+      'topic'    => 'required | min:3 | max:10',
+      'content'  => 'required | min:10 | max: 250',
+      'views'    => 'required | gte:0'
     ]);
     $post = Post::create($data);
 
