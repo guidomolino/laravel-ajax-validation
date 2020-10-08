@@ -1,6 +1,10 @@
 @extends('layouts.main-layout')
 @section('content')
 
-<h1>CIAO</h1>
+<ul>
+  @foreach ($posts as $post)
+    <li>{{ $post -> title }}; {{ $post -> views }} views</li>
+  @endforeach
+</ul>
 
 @endsection
