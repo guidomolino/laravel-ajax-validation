@@ -30218,6 +30218,34 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
+function getData() {
+  var postUrl = '/api/posts/all';
+  $.ajax({
+    url: postUrl,
+    method: "GET",
+    success: function success(posts) {
+      var target = $('#posts');
+
+      for (var i = 0; i < posts.length; i++) {
+        var post = posts[i];
+        var html = "<li>" + post['title'] + "; " + post['views'] + "views" + "</li>";
+        target.append(html);
+      }
+    },
+    error: function error(request, state, _error) {
+      console.log(state);
+      console.log(request);
+      console.log(_error);
+    }
+  });
+}
+
+function init() {
+  getData();
+}
+
+$(document).ready(init);
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
